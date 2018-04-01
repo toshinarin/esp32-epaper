@@ -86,7 +86,9 @@ bool isStrUpdated = true;
 volatile SemaphoreHandle_t strSemaphore;
 
 void callback(const char *s){
-  if ( xSemaphoreTake( strSemaphore, ( TickType_t ) 5 ) == pdTRUE ) {
+  // See if we can obtain or "Take" the Serial Semaphore.
+  // If the semaphore is not available, wait 5 ticks of the Scheduler to see if it becomes free.
+  if (xSemaphoreTake(strSemaphore, (TickType_t) 5) == pdTRUE) {
     str = strdup(s);
     isStrUpdated = true;
     xSemaphoreGive(strSemaphore);
@@ -113,10 +115,14 @@ void loop()
   //showBitmapExample();
   //showBitmapScholar();
   //drawCornerTest();
-  if (xSemaphoreTake(strSemaphore, 0) == pdTRUE){
+
+  // See if we can obtain or "Take" the Serial Semaphore.
+  // If the semaphore is not available, wait 5 ticks of the Scheduler to see if it becomes free.
+  if (xSemaphoreTake(strSemaphore, (TickType_t) 5) == pdTRUE){
     showStr(&FreeMonoBold9pt7b);
     xSemaphoreGive(strSemaphore);
   }
+
   //showFont("FreeMonoBold9pt7b", &FreeMonoBold9pt7b);
   //showFont("FreeMonoBold12pt7b", &FreeMonoBold12pt7b);
   //showFont("FreeMonoBold18pt7b", &FreeMonoBold18pt7b);
