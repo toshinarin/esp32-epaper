@@ -42,7 +42,7 @@ BLEUart::BLEUart(BLEWrittenCallback cb) {
 
 void BLEUart::setup() {
     // Create the BLE Device
-  BLEDevice::init("UART Service");
+  BLEDevice::init("ESP32 E-paper Service");
 
   // Create the BLE Server
   BLEServer *pServer = BLEDevice::createServer();
