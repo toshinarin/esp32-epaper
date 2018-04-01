@@ -98,7 +98,7 @@ void callback(const char *s){
 void setup()
 {
   Serial.begin(115200);
-  Serial.println()
+  Serial.println();
   Serial.println("Compiled: [" __DATE__ ", " __TIME__ "], Compiler version: [" __VERSION__ "]");
   Serial.println("setup start");
 
