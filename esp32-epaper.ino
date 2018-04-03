@@ -114,7 +114,6 @@ void setup()
 void loop()
 {
   //showBitmapExample();
-  //showBitmapScholar();
   //drawCornerTest();
 
   // See if we can obtain or "Take" the Serial Semaphore.
@@ -132,7 +131,6 @@ void loop()
 
 #if defined(_GxGDEP015OC1_H_) || defined(_GxGDE0213B1_H_) || defined(_GxGDEH029A1_H_)
 #include "IMG_0001.h"
-#include "IMG_SCHOLAR.h"
 #endif
 
 void showBitmapExample()
@@ -168,36 +166,6 @@ void showBitmapExample()
   {
     display.fillScreen(GxEPD_WHITE);
     display.drawExampleBitmap(gImage_IMG_0001, x, y, 64, 180, GxEPD_BLACK, reverse);
-    display.updateWindow(0, 0, display.width(), display.height());
-    delay(1000);
-  }
-  display.update();
-  delay(1000);
-}
-
-void showBitmapScholar()
-{
-  // thanks to bytecrusher: http://forum.arduino.cc/index.php?topic=487007.msg3367378#msg3367378
-  uint16_t x = (display.width() - 64) / 2;
-  uint16_t y = 5;
-  display.fillScreen(GxEPD_WHITE);
-  display.drawExampleBitmap(gImage_IMG_SCHORLAR, x, y, 64, 64, GxEPD_BLACK);
-  display.update();
-  delay(500);
-  uint16_t forward = GxEPD::bm_flip_x;
-  uint16_t reverse = GxEPD::bm_flip_x | GxEPD::bm_flip_y;
-  for (; y + 64 + 5 <= display.height(); y += 5)
-  {
-    display.fillScreen(GxEPD_WHITE);
-    display.drawExampleBitmap(gImage_IMG_SCHORLAR, x, y, 64, 64, GxEPD_BLACK, forward);
-    display.updateWindow(0, 0, display.width(), display.height());
-    delay(500);
-  }
-  delay(1000);
-  for (; y >= 5; y -= 5)
-  {
-    display.fillScreen(GxEPD_WHITE);
-    display.drawExampleBitmap(gImage_IMG_SCHORLAR, x, y, 64, 64, GxEPD_BLACK, reverse);
     display.updateWindow(0, 0, display.width(), display.height());
     delay(1000);
   }
