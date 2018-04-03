@@ -81,7 +81,7 @@ GxEPD_Class display(io, 16, 4); // arbitrary selection of (16), 4
 
 #include "BLE_uart.h"
 
-char *str = "Please set message";
+char *str = strdup("Please set message");
 bool isStrUpdated = true;
 volatile SemaphoreHandle_t strSemaphore;
 
